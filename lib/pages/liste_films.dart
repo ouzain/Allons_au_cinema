@@ -54,7 +54,15 @@ class _ListeFilmsState extends State<ListeFilms> {
     return Scaffold(
       appBar: AppBar(
         title: _barreRecherche,
+        backgroundColor: Colors.green,
         actions: [
+          
+          IconButton(
+            icon: Icon(_ordreInverse ? Icons.sort_by_alpha : Icons.sort),
+            onPressed: _trier,
+            tooltip: 'Trier par note',
+          ),
+
           IconButton(
             icon: _iconVisible,
             onPressed: () {
@@ -74,11 +82,6 @@ class _ListeFilmsState extends State<ListeFilms> {
               });
             },
           ),
-          IconButton(
-            icon: Icon(_ordreInverse ? Icons.sort_by_alpha : Icons.sort),
-            onPressed: _trier,
-            tooltip: 'Trier par note',
-          ),
         ],
       ),
       body: ListView.builder(
@@ -93,7 +96,10 @@ class _ListeFilmsState extends State<ListeFilms> {
             child: ListTile(
               leading: CircleAvatar(backgroundImage: NetworkImage(img)),
               title: Text(film.titre ?? ''),
-              subtitle: Text('Note : ${film.note?.toStringAsFixed(1) ?? 'N/A'}'),
+              subtitle: Text(
+                  'Date de sortie : ${film.dateDeSortie ?? 'inconnue'} - '
+                  'Note : ${film.note?.toStringAsFixed(1) ?? 'N/A'}',
+                ),
               onTap: () {
                 Navigator.push(
                   context,

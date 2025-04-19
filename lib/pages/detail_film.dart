@@ -16,7 +16,8 @@ class DetailFilm extends StatelessWidget {
         : imgDef;
 
     return Scaffold(
-      appBar: AppBar(title: Text(film.titre ?? '')),
+      appBar: AppBar(title: Text(film.titre ?? ''),
+      backgroundColor: Colors.green,),
       body: SingleChildScrollView(
         child: Column(
           children: [
